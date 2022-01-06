@@ -1,13 +1,18 @@
  
 <Header></Header>
-<div class=" container border border-danger"> 
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="/assets/images/amazon_header_logo.png"  alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="d-flex flex-wrap align-items-center justify-content-center border border-danger">
+  <div class="d-flex align-items-center justify-content-center m-4 p-2 " *ngFor="let user of users"> 
+    <div class="card" style="width: 18rem;">
+      <img style="height: 150px; width: 150px;" class=" align-self-center " src={{user.image}} alt="Card image cap">
+      <div class="card-body">
+        <small>prices :- {{user.price}}</small><br/>
+        <small>rating  :- {{user.rating.rate}}</small>
+        <h5 class="card-title">{{ (user.title.length>0)? (user.title | slice:0:50)+'....':(user.title) }}</h5>
+        <p class="card-text">{{ (user.description.length>0)? (user.description | slice:0:100)+'....':(user.description) }}</p>
+        <a  (click)="Add_Item(user.id)" class="align-self-center btn btn-primary">Add to Basket</a>
+      </div>
     </div>
   </div>
 </div>
+
 
